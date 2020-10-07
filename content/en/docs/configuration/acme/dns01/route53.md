@@ -180,6 +180,8 @@ spec:
 
 Note that, as mentioned above, the pod is using `arn:aws:iam::XXXXXXXXXXX:role/cert-manager` as a credentials source in Account X, but the `ClusterIssuer` ultimately assumes the `arn:aws:iam::YYYYYYYYYYYY:role/dns-manager` role to actually make changes in Route53 zones located in Account Y.
 
+> The `secretAccessKeySecretRef` and `accessKeyID` must be [base64 encoded](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#convert-your-secret-data-to-a-base-64-representation).
+
 ## EKS IAM Role for Service Accounts (IRSA)
 
 While [`kiam`](https://github.com/uswitch/kiam) / [`kube2iam`](https://github.com/jtblin/kube2iam) work directly with cert-manager, some special attention is needed for using the [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) feature available on EKS.
